@@ -6,11 +6,11 @@ export const withAuth = <P extends object>(
 ) => {
   return (props) => {
     const data = cookies();
-    const access_token = data.get("access_token");
-    if (!access_token) {
+    const username = data.get("username");
+    if (!username) {
       redirect("/");
     }
 
-    return <Component {...props} />;
+    return <Component {...props} username={username} />;
   };
 };
